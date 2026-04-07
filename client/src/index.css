@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-950: #131921;
+  --navy-900: #232f3e;
+  --sky-50: #f7fbff;
+  --sky-100: #e8f4ff;
+  --sky-200: #d4ebff;
+  --steel-500: #5f6b7a;
+  --accent-500: #ff9900;
+  --link-500: #007185;
+  --page-max-width: 88rem;
+  --page-shell-gutter: clamp(0.9rem, 2vw, 2rem);
+  --app-chrome-height: 12rem;
+  color: #111827;
+  background: #eaeded;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top center, rgba(68, 161, 255, 0.14), transparent 24%),
+    linear-gradient(180deg, #f5f8fb 0%, #eaeded 52%, #e4eaee 100%);
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+canvas {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.font-display {
+  font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px);
+}
+
+.stage-glow {
+  position: relative;
+}
+
+.stage-glow::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  background: radial-gradient(circle, rgba(70, 150, 255, 0.16), transparent 58%);
+  filter: blur(34px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(95, 107, 122, 0.45);
+  border-radius: 999px;
+}
+
+.app-shell {
+  width: min(calc(100% - (var(--page-shell-gutter) * 2)), var(--page-max-width));
+  margin-inline: auto;
+}
+
+.page-viewport {
+  min-height: calc(100dvh - var(--app-chrome-height));
+}
+
+@media (min-width: 640px) {
+  :root {
+    --app-chrome-height: 10.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --app-chrome-height: 9.25rem;
+  }
+}
