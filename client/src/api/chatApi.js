@@ -1,7 +1,13 @@
 import axios from "axios";
 
+const productionApiBaseUrl =
+  "https://microland-retail-intelligence-chatbot.onrender.com/api";
+const defaultApiBaseUrl = import.meta.env.PROD
+  ? productionApiBaseUrl
+  : "http://localhost:5000/api";
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
+  baseURL: import.meta.env.VITE_API_BASE_URL || defaultApiBaseUrl,
 });
 
 export const sendChatMessage = async (message, context = {}) => {
