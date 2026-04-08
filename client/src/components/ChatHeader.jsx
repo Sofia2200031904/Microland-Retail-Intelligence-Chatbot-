@@ -50,63 +50,65 @@ function ExpandIcon() {
 
 export default function ChatHeader({ onClose, onExpand, isExpanded = false }) {
   return (
-    <div className="bg-gradient-to-r from-[#3453ff] via-[#1789ff] to-[#13c7ff] px-6 py-5 text-white">
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/20 text-base font-semibold shadow-lg ring-2 ring-white/40">
+    <div className="relative bg-gradient-to-r from-[#3453ff] via-[#1789ff] to-[#13c7ff] px-5 py-4 text-white sm:px-6">
+      <div className="pr-24">
+        <div className="flex items-start gap-3">
+          <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/20 text-[15px] font-semibold shadow-lg ring-2 ring-white/40">
             AI
           </div>
 
-          <div>
+          <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
               Chat with
             </p>
-            <h1 className="mt-1 text-2xl font-semibold md:text-[1.9rem]">
-              Electronics Retail Copilot
+            <h1 className="mt-1 text-[2rem] font-semibold leading-[0.92] tracking-[-0.02em] sm:text-[2.15rem]">
+              <span className="block">Electronics</span>
+              <span className="block whitespace-nowrap">Retail Copilot</span>
             </h1>
-            <p className="mt-1 text-base text-white/85">
-              We are online. Ask about inventory, sales, products, or order help.
-            </p>
+            <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/16 px-3 py-1 text-sm font-semibold text-white">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#8dffb2]" />
+              Online
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="flex items-center gap-2 pt-1">
-          <span className="h-2.5 w-2.5 rounded-full bg-white/70" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/50" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/30" />
-          {onExpand ? (
-            <button
-              type="button"
-              onClick={onExpand}
-              aria-label={isExpanded ? "Exit full screen chat" : "Expand chat"}
-              className="ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition hover:bg-white/25"
+      <div className="absolute right-5 top-4 flex items-center gap-2 sm:right-6">
+        <span className="h-2.5 w-2.5 rounded-full bg-white/70" />
+        <span className="h-2.5 w-2.5 rounded-full bg-white/50" />
+        <span className="h-2.5 w-2.5 rounded-full bg-white/30" />
+        {onExpand ? (
+          <button
+            type="button"
+            onClick={onExpand}
+            aria-label={isExpanded ? "Exit full screen chat" : "Expand chat"}
+            className="ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition hover:bg-white/25"
+          >
+            <ExpandIcon />
+          </button>
+        ) : null}
+        {onClose ? (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close chat"
+            className="ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition hover:bg-white/25"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              fill="none"
+              className="h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <ExpandIcon />
-            </button>
-          ) : null}
-          {onClose ? (
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close chat"
-              className="ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition hover:bg-white/25"
-            >
-              <svg
-                viewBox="0 0 20 20"
-                fill="none"
-                className="h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5 5L15 15M15 5L5 15"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-          ) : null}
-        </div>
+              <path
+                d="M5 5L15 15M15 5L5 15"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        ) : null}
       </div>
     </div>
   );

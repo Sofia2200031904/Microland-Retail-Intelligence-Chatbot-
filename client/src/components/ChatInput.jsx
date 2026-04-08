@@ -73,8 +73,8 @@ export default function ChatInput({ onSend, isLoading }) {
           </div>
         ) : null}
 
-        <div className="flex items-end gap-3">
-          <div className="flex-1 rounded-[24px] border border-[#d9e7ff] bg-[#f9fbff] px-4 py-3">
+        <div className="flex flex-col gap-3">
+          <div className="rounded-[24px] border border-[#d9e7ff] bg-[#f9fbff] px-4 py-3">
             <textarea
               value={input}
               onChange={(event) => setInput(event.target.value)}
@@ -85,55 +85,57 @@ export default function ChatInput({ onSend, isLoading }) {
               }}
               rows={2}
               placeholder="Enter your message..."
-              className="w-full resize-none border-none bg-transparent text-[15px] leading-8 text-[#22324c] outline-none placeholder:text-[#9aabc4] md:text-base"
+              className="min-h-[60px] w-full resize-none border-none bg-transparent text-[15px] leading-6 text-[#22324c] outline-none placeholder:text-[#9aabc4] md:text-base"
             />
 
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs">
-              <div className="flex items-center gap-2 text-[#7c8cab]">
+            <div className="mt-3 flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[#7c8cab]">
                 <span>{isLoading ? "Retail copilot is typing..." : "Press Enter to send"}</span>
                 {error ? <span className="text-[#d14d4d]">{error}</span> : null}
               </div>
 
-              <div className="rounded-full bg-[#eef5ff] px-3 py-1 font-semibold uppercase tracking-[0.16em] text-[#2876ff]">
+              <div className="w-fit rounded-full bg-[#eef5ff] px-3 py-1 font-semibold uppercase tracking-[0.16em] text-[#2876ff]">
                 {isListening ? "Listening" : "Voice ready"}
               </div>
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={isListening ? stopListening : startListening}
-            disabled={!isSupported}
-            className={`rounded-full border px-4 py-3 text-[15px] font-semibold transition ${
-              isListening
-                ? "border-[#8dc4ff] bg-[#eaf4ff] text-[#1768ff]"
-                : "border-[#d9e7ff] bg-white text-[#4a6387]"
-            } disabled:cursor-not-allowed disabled:opacity-50`}
-          >
-            {isListening ? "Stop" : "Voice"}
-          </button>
-
-          <button
-            type="submit"
-            disabled={isLoading || !input.trim()}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-[#3453ff] via-[#1789ff] to-[#13c7ff] text-sm font-semibold text-white shadow-[0_14px_30px_rgba(23,137,255,0.35)] transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50"
-            aria-label="Send message"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              className="h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className="flex items-center justify-end gap-3">
+            <button
+              type="button"
+              onClick={isListening ? stopListening : startListening}
+              disabled={!isSupported}
+              className={`flex h-12 min-w-[120px] items-center justify-center rounded-full border px-5 text-[15px] font-semibold transition ${
+                isListening
+                  ? "border-[#8dc4ff] bg-[#eaf4ff] text-[#1768ff]"
+                  : "border-[#d9e7ff] bg-white text-[#4a6387]"
+              } disabled:cursor-not-allowed disabled:opacity-50`}
             >
-              <path
-                d="M5 12H19M19 12L13 6M19 12L13 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+              {isListening ? "Stop voice" : "Voice"}
+            </button>
+
+            <button
+              type="submit"
+              disabled={isLoading || !input.trim()}
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#3453ff] via-[#1789ff] to-[#13c7ff] text-sm font-semibold text-white shadow-[0_14px_30px_rgba(23,137,255,0.35)] transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="Send message"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                className="h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L13 6M19 12L13 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </form>
