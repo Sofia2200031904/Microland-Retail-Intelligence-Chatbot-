@@ -373,3 +373,6 @@ Official docs for the optional step:
 
 - [OpenAI Responses API](https://platform.openai.com/docs/api-reference/responses/object?lang=node.js)
 - [Responses migration guide](https://platform.openai.com/docs/guides/migrate-to-responses)
+
+## 12. Project url 
+https://luminous-madeleine-2f9f92.netlify.app/
